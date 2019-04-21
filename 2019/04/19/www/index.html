@@ -1,18 +1,695 @@
-extends views/main.pug
+<!DOCTYPE html>
 
-block head
-  title
-    = page.title + ' - ' + config.title
 
-block main
-  include mixins/post.pug
-  +post(page, 'post')
 
-  //-
-  include plugins/reward.pug
+  
 
-  //- comment
-  if theme.comment_plugin == 'valine'
-    include plugins/valine.pug
-  else
-    include plugins/livere.pug
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="语雀空间，助力知识管理去年，语雀针对大型团队知识管理场景开发了「语雀空间」，送出了一千多个邀请码。 结合试用用户的反馈和建议，我们对语雀空间进行了全面升级。相比以前的版本，大大降低了使用成本，同时我们在知识沉淀和分享方面做了很多努力，希望新的语雀空间可以更好地助力知识管理。 今天，我们很高兴地告诉大家，语雀空间已经全面开放，可以直接开通使用，快速体验进阶版的知识管理。**  🎉 特色功能 1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="www">
+<meta property="og:url" content="http://yoursite.com/2019/04/19/www/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="语雀空间，助力知识管理去年，语雀针对大型团队知识管理场景开发了「语雀空间」，送出了一千多个邀请码。 结合试用用户的反馈和建议，我们对语雀空间进行了全面升级。相比以前的版本，大大降低了使用成本，同时我们在知识沉淀和分享方面做了很多努力，希望新的语雀空间可以更好地助力知识管理。 今天，我们很高兴地告诉大家，语雀空间已经全面开放，可以直接开通使用，快速体验进阶版的知识管理。**  🎉 特色功能 1.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555395451533-d023cc24-574f-4a84-b7c3-556e8bac0cb2.png#align=left&display=inline&height=1280&name=image.png&originHeight=1280&originWidth=2576&size=346267&status=done&width=2576">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555395469420-8c87ffd2-554f-4712-b7f0-f47b8fe68ba9.png#align=left&display=inline&height=800&name=image.png&originHeight=800&originWidth=1440&size=162547&status=done&width=1440">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84147/1553689833509-8dae1963-1faa-461e-8eb2-c757518cf5d1.png#align=left&display=inline&height=218&originHeight=398&originWidth=1364&status=done&width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396241854-3d99f1fb-9d27-4e6e-bd97-694e9723c70e.png#align=left&display=inline&height=354&name=image.png&originHeight=354&originWidth=990&size=55816&status=done&width=990">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396587440-76f1808d-be05-4b51-8856-59f73c47f749.png#align=left&display=inline&height=84&name=image.png&originHeight=138&originWidth=1113&size=23682&status=done&width=681">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396350361-1ac6c1d0-45a5-4ada-98fe-99dccb8fd7ea.png#align=left&display=inline&height=466&originHeight=900&originWidth=1440&status=done&width=746">
+<meta property="og:updated_time" content="2019-04-19T13:35:57.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="www">
+<meta name="twitter:description" content="语雀空间，助力知识管理去年，语雀针对大型团队知识管理场景开发了「语雀空间」，送出了一千多个邀请码。 结合试用用户的反馈和建议，我们对语雀空间进行了全面升级。相比以前的版本，大大降低了使用成本，同时我们在知识沉淀和分享方面做了很多努力，希望新的语雀空间可以更好地助力知识管理。 今天，我们很高兴地告诉大家，语雀空间已经全面开放，可以直接开通使用，快速体验进阶版的知识管理。**  🎉 特色功能 1.">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/84161/1555395451533-d023cc24-574f-4a84-b7c3-556e8bac0cb2.png#align=left&display=inline&height=1280&name=image.png&originHeight=1280&originWidth=2576&size=346267&status=done&width=2576">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/19/www/">
+
+
+
+
+
+  <title>www | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/www/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">www</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T21:19:15+08:00">
+                2019-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="语雀空间，助力知识管理"><a href="#语雀空间，助力知识管理" class="headerlink" title="语雀空间，助力知识管理"></a>语雀空间，助力知识管理</h1><p>去年，语雀针对大型团队知识管理场景开发了<a href="https://www.yuque.com/yuque/help/organizations" target="_blank" rel="noopener">「语雀空间」</a>，送出了一千多个邀请码。</p>
+<p>结合试用用户的反馈和建议，我们对<a href="https://www.yuque.com/yuque/help/organizations" target="_blank" rel="noopener">语雀空间</a>进行了全面升级。相比以前的版本，大大降低了使用成本，同时我们在知识沉淀和分享方面做了很多努力，希望新的语雀空间可以更好地助力知识管理。</p>
+<p>今天，我们很高兴地告诉大家，<strong>语雀空间已经全面开放，可以直接开通使用，快速体验进阶版的知识管理。</strong><br>**<br><img src="https://cdn.nlark.com/yuque/0/2019/png/84161/1555395451533-d023cc24-574f-4a84-b7c3-556e8bac0cb2.png#align=left&amp;display=inline&amp;height=1280&amp;name=image.png&amp;originHeight=1280&amp;originWidth=2576&amp;size=346267&amp;status=done&amp;width=2576" alt="image.png"></p>
+<p><a name="2c544b3c"></a></p>
+<h1 id="🎉-特色功能"><a href="#🎉-特色功能" class="headerlink" title="🎉 特色功能"></a>🎉 特色功能</h1><p><a name="f97946c6"></a></p>
+<h3 id="1-知识门户"><a href="#1-知识门户" class="headerlink" title="1. 知识门户"></a>1. 知识门户</h3><p>我们为每一个空间单独提供了一个<strong>「知识门户」</strong>。</p>
+<p>在这里，你可以设置内部公告板，也可以将推荐的知识库、团队固定在门户首页，比如 “员工手册”、“团队文化”，让员工可以快速获取各种信息。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/84161/1555395469420-8c87ffd2-554f-4712-b7f0-f47b8fe68ba9.png#align=left&amp;display=inline&amp;height=800&amp;name=image.png&amp;originHeight=800&amp;originWidth=1440&amp;size=162547&amp;status=done&amp;width=1440" alt="image.png"><br><br><br>同时，我们加入了“最新发布”、“空间成员”的展示，员工可以第一时间掌握整个最新文档和空间成员信息。<br></p>
+<p><a name="d91ea87e"></a></p>
+<h3 id="2-安全防护"><a href="#2-安全防护" class="headerlink" title="2. 安全防护"></a>2. 安全防护</h3><p><strong>用户数据安全</strong>，一直是语雀的最为关注的“重中之重”。过去一年，我们通过了国内外多个安全认证，依托蚂蚁金服底层能力提供金融级安全保障。<br><br><br>借鉴阿里巴巴内部的信息安全防护措施，我们在即将上线的空间中也加入了更多信息安全功能，比如“全局水印”、“IP白名单访问”、“导出权限控制”、“团队操作日志”、“离职权限自动回收”，让数据在空间内部更加安全可靠。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/84147/1553689833509-8dae1963-1faa-461e-8eb2-c757518cf5d1.png#align=left&amp;display=inline&amp;height=218&amp;originHeight=398&amp;originWidth=1364&amp;status=done&amp;width=746" alt></p>
+<p><a name="179a5eae"></a></p>
+<h3 id="3-灵活的权限管理"><a href="#3-灵活的权限管理" class="headerlink" title="3. 灵活的权限管理"></a>3. 灵活的权限管理</h3><p>为了满足更多的业务需求，我们设计了非常灵活的权限管理，针对团队、知识库，甚至是单篇文档都可以设定不同访问权限。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396241854-3d99f1fb-9d27-4e6e-bd97-694e9723c70e.png#align=left&amp;display=inline&amp;height=354&amp;name=image.png&amp;originHeight=354&amp;originWidth=990&amp;size=55816&amp;status=done&amp;width=990" alt="image.png"></p>
+<p><a name="1387a8d9"></a></p>
+<h3 id="4-团队协作分享"><a href="#4-团队协作分享" class="headerlink" title="4. 团队协作分享"></a>4. 团队协作分享</h3><p>这是新版本空间最大的变化之一，在原有文档、知识库、团队的协作分享上面，我们额外加入了空间与外部业务的协作分享。可以满足实际业务合作中遇到的知识很难分享的问题。</p>
+<p><a name="43c75247"></a></p>
+<h3 id="5-第三方登录"><a href="#5-第三方登录" class="headerlink" title="5. 第三方登录"></a>5. 第三方登录</h3><p>新语雀空间支持钉钉、企业微信、SAML 等 SSO 登录方式，可以快速打通团队内部的沟通方式，让用户更加方便的使用语雀进行知识创作和分享。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396587440-76f1808d-be05-4b51-8856-59f73c47f749.png#align=left&amp;display=inline&amp;height=84&amp;name=image.png&amp;originHeight=138&amp;originWidth=1113&amp;size=23682&amp;status=done&amp;width=681" alt="image.png"><br><br><br></p>
+<p><a name="736c5e97"></a></p>
+<h3 id="6-外部联系人"><a href="#6-外部联系人" class="headerlink" title="6. 外部联系人"></a>6. 外部联系人</h3><p>通过外部联系人功能，空间管理员可以更加安全可靠的对外部人员进行管理，对业务伙伴单独授权管理知识内容，可分配阅读或编辑权限。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/84161/1555396350361-1ac6c1d0-45a5-4ada-98fe-99dccb8fd7ea.png#align=left&amp;display=inline&amp;height=466&amp;originHeight=900&amp;originWidth=1440&amp;status=done&amp;width=746" alt></p>
+<p><a name="838d5979"></a></p>
+<h3 id="7-更多特性"><a href="#7-更多特性" class="headerlink" title="7. 更多特性"></a>7. 更多特性</h3><p>除了以上的特色功能，空间还享有以下权益：</p>
+<ul>
+<li>付费空间可单独定制自定义域名</li>
+<li>资源使用无限且大容量，如：最大支持 2GB 本地视频上传</li>
+<li>拥有 7 *24 专业客服团队</li>
+<li>所有功能优先体验资格</li>
+</ul>
+<p><a name="d8d92c27"></a></p>
+<h1 id="💰-空间付费"><a href="#💰-空间付费" class="headerlink" title="💰 空间付费"></a>💰 空间付费</h1><p>本次新版本空间我们采用<strong> **</strong>90天免费试用 <strong>方式，你可以在 90 天内倾情体验新版空间。<br></strong>试用结束后，每年收费 5999 元/空间，可以享受首年优惠（2999元/空间）**。</p>
+<p><a name="1cb19c0e"></a></p>
+<h1 id="🎁-Bonus：教育-amp-公益赋能"><a href="#🎁-Bonus：教育-amp-公益赋能" class="headerlink" title="🎁 Bonus：教育 &amp; 公益赋能"></a>🎁 Bonus：教育 &amp; 公益赋能</h1><p>为了服务社会，对于非盈利公益组织和公立教育行业，我们特别提供<strong>免费的语雀空间</strong>，希望我们的平台可以为社会贡献更多有意义的事情。开通免费空间，请发邮件到 <a href="mailto:support@yuque.com" target="_blank" rel="noopener">support@yuque.com</a> 申请。</p>
+<p>欢迎试用空间，点击查看<a href="https://www.yuque.com/yuque/help/kor24n" target="_blank" rel="noopener">如何开通</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/19/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语雀空间，助力知识管理"><span class="nav-number">1.</span> <span class="nav-text">语雀空间，助力知识管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#🎉-特色功能"><span class="nav-number">2.</span> <span class="nav-text">🎉 特色功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-知识门户"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 知识门户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安全防护"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 安全防护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-灵活的权限管理"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. 灵活的权限管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-团队协作分享"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. 团队协作分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-第三方登录"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. 第三方登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-外部联系人"><span class="nav-number">2.0.6.</span> <span class="nav-text">6. 外部联系人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-更多特性"><span class="nav-number">2.0.7.</span> <span class="nav-text">7. 更多特性</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#💰-空间付费"><span class="nav-number">3.</span> <span class="nav-text">💰 空间付费</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#🎁-Bonus：教育-amp-公益赋能"><span class="nav-number">4.</span> <span class="nav-text">🎁 Bonus：教育 &amp; 公益赋能</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
